@@ -1,0 +1,21 @@
+# Dependencies (install on server with npm install)
+node_modules/
+
+# Secrets — never upload to GitHub
+.env
+.env.local
+.env.*.local
+
+# Frontend build output
+frontend/build/
+
+# Logs & OS files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
