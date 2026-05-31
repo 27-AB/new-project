@@ -2,7 +2,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useAuth } from "../context/AuthContext";
 import { PageHeader, SectionCard, Loader, ErrorMsg, Btn } from "../components/ui";
 
-const API = localStorage.getItem("astu_college_url") || "http://localhost:4003";
+import { getServiceUrl } from "../config/api";
+
+const API = getServiceUrl("college");
 
 // Correct official colleges
 const COLLEGES = [

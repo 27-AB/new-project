@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
 import { PageHeader, SectionCard, Btn } from "../components/ui";
+import { getApiUrls } from "../config/api";
 
 export default function Settings() {
   const { user, token } = useAuth();
@@ -11,12 +12,15 @@ export default function Settings() {
   const [savingRole, setSavingRole] = useState(null);
   
   // API Endpoints State
-  const [apiConfig, setApiConfig] = useState({
-    researchUrl:  localStorage.getItem("astu_research_url")  || "http://localhost:4001",
-    communityUrl: localStorage.getItem("astu_community_url") || "http://localhost:4002",
-    collegeUrl:   localStorage.getItem("astu_college_url")   || "http://localhost:4003",
-    analyticsUrl: localStorage.getItem("astu_analytics_url") || "http://localhost:4000",
-    authUrl:      localStorage.getItem("astu_auth_url")      || "http://localhost:4004",
+  const [apiConfig, setApiConfig] = useState(() => {
+    const urls = getApiUrls();
+    return {
+      researchUrl: urls.research,
+      communityUrl: urls.community,
+      collegeUrl: urls.college,
+      analyticsUrl: urls.analytics,
+      authUrl: urls.auth,
+    };
   });
 
   // Services Diagnostics State

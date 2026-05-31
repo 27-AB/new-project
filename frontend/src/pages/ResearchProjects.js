@@ -3,7 +3,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Badge, SectionCard, PageHeader, Btn, Loader, ErrorMsg, fmtETB } from "../components/ui";
 
-const API = localStorage.getItem("astu_research_url") || "http://localhost:4001";
+import { getServiceUrl } from "../config/api";
+
+const API = getServiceUrl("research");
 
 // Correct ASTU colleges from official website
 const COLLEGES = [

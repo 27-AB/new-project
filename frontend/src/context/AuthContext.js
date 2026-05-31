@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext(null);
-const API = localStorage.getItem("astu_auth_url") || process.env.REACT_APP_AUTH_URL || "http://localhost:4004";
+import { getServiceUrl } from "../config/api";
+
+const API = getServiceUrl("auth");
 
 export const AuthProvider = ({ children }) => {
   const [user,    setUser]    = useState(null);

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { PageHeader, Loader, ErrorMsg } from "../components/ui";
 
-const API = localStorage.getItem("astu_college_url") || "http://localhost:4003";
+import { getServiceUrl } from "../config/api";
+
+const API = getServiceUrl("college");
 
 export default function Colleges() {
   const { token } = useAuth();

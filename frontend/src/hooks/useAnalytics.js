@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "../context/AuthContext";
 
-const API = localStorage.getItem("astu_analytics_url") || process.env.REACT_APP_API_URL || "http://localhost:4000";
+import { getServiceUrl } from "../config/api";
+
+const API = getServiceUrl("analytics");
 
 export const useAnalytics = () => {
   const { token } = useAuth();

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { PageHeader } from "../components/ui";
 
-const API = localStorage.getItem("astu_analytics_url") || process.env.REACT_APP_API_URL || "http://localhost:4000";
+import { getServiceUrl } from "../config/api";
+
+const API = getServiceUrl("analytics");
 
 const ReportCard = ({ title, desc, icon, color, onGenerate, loading }) => (
   <div style={{ background:"#162030", border:`1px solid ${color}25`, borderRadius:14, padding:24 }}>

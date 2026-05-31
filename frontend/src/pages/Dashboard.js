@@ -8,7 +8,9 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:4000";
+import { getServiceUrl } from "../config/api";
+
+const API = getServiceUrl("analytics");
 const COLLEGE_COLORS = ["#3b82f6","#10b981","#f59e0b","#8b5cf6","#ef4444","#06b6d4","#84cc16"];
 
 const ChartTip = ({ active, payload, label }) => {
