@@ -1,6 +1,36 @@
 const { getAggregatedAnalytics } = require("../services/aggregatorService");
 const PDFDocument = require("pdfkit");
 
+const { getAIInsights, analyzeProject } = require("../services/aiService");
+
+// GET /api/ai/insights
+exports.getInsights = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    const result = await getAIInsights(token);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    console.error("AI insights error:", err.message);
+    res.status(502).json({ success: false, message: "Failed to generate AI insights.", detail: err.message });
+  }
+};
+
+// POST /api/ai/analyze-project
+exports.analyzeProject = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    const { title, summary, college, department } = req.body;
+    if (!title && !summary) {
+      return res.status(400).json({ success: false, message: "Title or summary is required." });
+    }
+    const result = await analyzeProject({ title, summary, college, department }, token);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    console.error("AI analyze-project error:", err.message);
+    res.status(502).json({ success: false, message: "Failed to analyze project.", detail: err.message });
+  }
+};
+
 // GET /api/analytics
 exports.getAnalytics = async (req, res) => {
   try {

@@ -9,6 +9,7 @@ import {
 } from "recharts";
 
 import { getServiceUrl } from "../config/api";
+import AIInsightsPanel from "../components/ai/AIInsightsPanel";
 
 const API = getServiceUrl("analytics");
 const COLLEGE_COLORS = ["#3b82f6","#10b981","#f59e0b","#8b5cf6","#ef4444","#06b6d4","#84cc16"];
@@ -558,6 +559,13 @@ export default function Dashboard() {
       </div>
 
       {/* Recent projects table */}
+      {/* AI Strategic Insights */}
+      <div style={{ marginBottom: 16 }}>
+        <AIInsightsPanel />
+      </div>
+
+      {/* Recent projects table */}
+      
       <SectionCard title="Recent Projects">
         <div style={{ overflowX:"auto" }}>
           <table style={{ width:"100%", borderCollapse:"collapse", fontSize:13 }}>

@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { Badge, SectionCard, PageHeader, Btn, Loader, ErrorMsg, fmtETB } from "../components/ui";
 
 import { getServiceUrl } from "../config/api";
+import AICopilotPanel from "../components/ai/AICopilotPanel";
 
 const API = getServiceUrl("research");
 
@@ -615,6 +616,13 @@ export default function ResearchProjects() {
                 <label style={labelStyle}>Proposal Summary</label>
                 <textarea value={form.summary} onChange={e => setForm(f => ({ ...f, summary: e.target.value }))} rows={3} style={{ ...inputStyle, resize: "vertical" }} placeholder="Brief description of the research goal..." />
               </div>
+
+              <AICopilotPanel
+                title={form.title}
+                summary={form.summary}
+                college={form.college}
+                department={form.department}
+              />
 
               <div style={{ gridColumn: "1/-1" }}>
                 <label style={labelStyle}>Collaborators (Select other researchers and set priority)</label>
